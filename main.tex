@@ -111,21 +111,21 @@
 
 \begin{document}
     %<{type: "group", description: "Personal information"}
-    \name{John Doe} %<{description: "Your first and last name", type: "text"}>
-    \tagline{Test Developer} %<{description: "Profession", type: "text"}>
+    \name{John Doe} %<{description: "Your first and last name", type: "text", inputValue: "John Doe"}>
+    \tagline{Test Developer} %<{description: "Profession", type: "text", inputValue: "Test Developer"}>
     %% You can add multiple photos on the left or right
     \photoL{4cm}
-    {john-doe} %<{"type": "crop", "aspect": "1", "description": "Profile picture / photo"}>
+    {john-doe} %<{type: "crop", aspect: 1, description: "Profile picture / photo", inputValue: "john-doe"}>
 
     \personalinfo{
-        \email{john_doe@email.com}\smallskip %<{description: "Email address", type: "email"}>
-        \phone{+01-2345-678901} %<{description: "Phone number", type: "phonenumber"}>
-        \location{City, Country}\\ %<{description: "Location", type: "text"}>
-        \linkedin{johnDoe} %<{description: "Linkedin username (optional)", type: "text", deleteOnEmpty: true}>
-        \github{johnDoe} %<{description: "Github username (optional)", type: "text", deleteOnEmpty: true}>
-        \dev{johnDoe} %<{description: "Dev username (optional)", type: "text", deleteOnEmpty: true}>
-        \homepage{nicolasomar.me} %<{description: "Website / homepage (optional)", type: "text", deleteOnEmpty: true}>
-        \medium{nicolasomar} %<{description: "Medium username (optional)", type: "text", deleteOnEmpty: true}>
+        \email{john_doe@email.com}\smallskip %<{description: "Email address", type: "email", inputValue: "john_doe@email.com"}>
+        \phone{+01-2345-678901} %<{description: "Phone number", type: "phonenumber", inputValue: "+012345678901"}>
+        \location{City, Country}\\ %<{description: "Location", type: "text", inputValue: "City, Country"}>
+        \linkedin{johnDoe} %<{description: "Linkedin username (optional)", type: "text", deleteOnEmpty: true, inputValue: "johnDoe"}>
+        \github{johnDoe} %<{description: "Github username (optional)", type: "text", deleteOnEmpty: true, inputValue: "johnDoe"}>
+        \dev{johnDoe} %<{description: "Dev username (optional)", type: "text", deleteOnEmpty: true, inputValue: "johnDoe"}>
+        \homepage{nicolasomar.me} %<{description: "Website / homepage (optional)", type: "text", deleteOnEmpty: true, inputValue: "nicolasomar.me"}>
+        \medium{nicolasomar} %<{description: "Medium username (optional)", type: "text", deleteOnEmpty: true, inputValue: "nicolasomar"}>
         %% You MUST add the academicons option to \documentclass, then compile with LuaLaTeX or XeLaTeX, if you want to use \orcid or other academicons commands.
         % \orcid{0000-0000-0000-0000}
         %% You can add your own arbtrary detail with
@@ -153,9 +153,9 @@
         %<{type: "group", description: "Left column"}
         \cvsection{Strengths}
         %<{description: "List your strengths", type: "list", minChildren: 2}
-            \cvtag{One} %<{description: "Strength tag", type: "text"}>
-            \cvtag{Two}
-            \cvtag{Three}
+            \cvtag{One} %<{description: "Strength tag", type: "text", inputValue: "One"}>
+            \cvtag{Two} %<{description: "Strength tag", type: "text", inputValue: "Two"}>
+            \cvtag{Three} %<{description: "Strength tag", type: "text", inputValue: "Three"}>
             \cvtag{Four}
             \cvtag{Five}
             \cvtag{Six}
@@ -177,9 +177,9 @@
         % ----- LEARNING -----
         \cvsection{Learning}
         %<{description: "List the things you're learning", type: "list", minChildren: 2}
-            \cvtag{Uno} %<{description: "Learning tag", type: "text"}>
-            \cvtag{Dos}
-            \cvtag{Tres}
+            \cvtag{Uno} %<{description: "Learning tag", type: "text", inputValue: "Uno"}>
+            \cvtag{Dos} %<{description: "Learning tag", type: "text", inputValue: "Dos"}>
+            \cvtag{Tres} %<{description: "Learning tag", type: "text", inputValue: "Tres"}>
             \cvtag{Cuatro}
             \cvtag{Cinco}
             \cvtag{Seis}
@@ -206,11 +206,15 @@
         \cvsection{Languages}
         %<{description: "List the languages you know", type: "list", minChildren: 1}
             %<{description: "", type: "group"}
-                \cvlang{Lang 1} %<{description: "Language", type: "text"}>
-                {Native}\\ %<{description: "Language level (eg Basic, A2, native, ...)", type: "text"}>
+                \cvlang{Lang 1} %<{description: "Language", type: "text", inputValue: "Lang 1"}>
+                {Native}\\ %<{description: "Language level (eg Basic, A2, native, ...)", type: "text", inputValue: "Native"}>
                 \divider
             %>
-            \cvlang{Lang 2}{Basic / A2}
+            %<{description: "", type: "group"}
+                \cvlang{Lang 2} %<{description: "Language", type: "text", inputValue: "Lang 2"}>
+                {Basic / A2}\\ %<{description: "Language level (eg Basic, A2, native, ...)", type: "text", inputValue: "Basic / A2"}>
+                \divider
+            %>
             %% Yeah I didn't spend too much time making all the
             %% spacing consistent... sorry. Use \smallskip, \medskip,
             %% \bigskip, \vpsace etc to make ajustments.
@@ -253,7 +257,7 @@
         
         % ----- ABOUT ME -----
         \cvsection{About Me}
-        %<{description: "About me", type: "textblock"}
+        %<{description: "About me", type: "textblock", inputValue: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."}
             {Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.}
         %>
                 
@@ -265,30 +269,41 @@
         \cvsection{Experience}
         %<{description: "Experience", type: "list", minChildren: 1}
             %<{description: "", type: "group"}
-                    \cvevent{
-                    {Position} %<{description: "Position", type: "text"}>
-                     }
-                    {| 
-                    {Company} %<{description: "Company name", type: "text"}>
+                \cvevent{
+                {Position} %<{description: "Position", type: "text", inputValue: "Position"}>
                     }
-                    {Mm YYYY -- Mm YYYY} %<{description: "Period (any format)", "type": "text"}>
-                    {City, Country} %<{description: "Location", type: "text"}>
-                    \begin{itemize}
-                        %<{description: "Additional information", type: "list", minChildren: 1}
-                            \item {First item} %<{"description": "", "type": "text"}>
-                            \item Second item
-                            \item Third item
-                        %>
-                    \end{itemize}
-                    \divider
-            %>
-                
-                \cvevent{Position }{| Company}{Mm YYYY -- Mm YYYY}{City, Country}
+                {| 
+                {Company} %<{description: "Company name", type: "text", inputValue: "Company"}>
+                }
+                {Mm YYYY -- Mm YYYY} %<{description: "Period (any format)", type: "text", inputValue: "Mm YYYY -- Mm YYYY"}>
+                {City, Country} %<{description: "Location", type: "text", inputValue: "City, Country"}>
                 \begin{itemize}
-                    \item First item
-                    \item Second item
-                    \item Third item
+                    %<{description: "Additional information", type: "list", minChildren: 1}
+                        \item {First item} %<{"description": "", "type": "text", inputValue: "First item"}>
+                        \item {Second item} %<{"description": "", "type": "text", inputValue: "Second item"}>
+                        \item {Third item} %<{"description": "", "type": "text", inputValue: "Third item"}>
+                    %>
                 \end{itemize}
+                \divider
+            %>
+            %<{description: "", type: "group"}
+                \cvevent{
+                {Position} %<{description: "Position", type: "text", inputValue: "Position"}>
+                 }
+                {| 
+                {Company} %<{description: "Company name", type: "text", inputValue: "Company"}>
+                }
+                {Mm YYYY -- Mm YYYY} %<{description: "Period (any format)", type: "text", inputValue: "Mm YYYY -- Mm YYYY"}>
+                {City, Country} %<{description: "Location", type: "text", inputValue: "City, Country"}>
+                \begin{itemize}
+                    %<{description: "Additional information", type: "list", minChildren: 1}
+                        \item {First item} %<{"description": "", "type": "text", inputValue: "First item"}>
+                        \item {Second item} %<{"description": "", "type": "text", inputValue: "Second item"}>
+                        \item {Third item} %<{"description": "", "type": "text", inputValue: "Third item"}>
+                    %>
+                \end{itemize}
+                \divider
+            %>
         %>
         % ----- EXPERIENCE -----
         
@@ -297,25 +312,37 @@
         %<{description: "Education", type: "list", minChildren: 1}
             %<{description: "", type: "group"}
                 \cvevent{
-                {Title} %<{description: "Education / course title", type: "text"}>
+                {Title} %<{description: "Education / course title", type: "text", inputValue: "Title"}>
                  }
                  {| 
-                 {Institution} %<{description: "Institution, school, university", type: "text"}>
+                 {Institution} %<{description: "Institution, school, university", type: "text", inputValue: "Institution"}>
                  }
-                 {Mm YYYY -- Mm YYYY} %<{description: "Period", type: "text"}>
-                 {City, Country} %<{description: "City, country", type: "text"}>
+                 {Mm YYYY -- Mm YYYY} %<{description: "Period", type: "text", inputValue: "Mm YYYY -- Mm YYYY"}>
+                 {City, Country} %<{description: "City, country", type: "text", inputValue: "City, Country"}>
                 \begin{itemize}
-                %<{description: "Additional information", type: "list", minChildren: 1}
-                    \item GPA: 1,23 %<{description: "Information (like score or education features", type: "text"}>
+                %<{description: "Additional information", type: "list"}
+                    \item {GPA: 1,23} %<{description: "Information (like score or education features", type: "text", inputValue: "GPA: 1,23"}>
                 %>
                 \end{itemize}
                 \divider
             %>
             
-            \cvevent{Title }{| Institution}{Mm YYYY -- Mm YYYY}{City, Country}
-            \begin{itemize}
-                \item GPA: 1,23
-            \end{itemize}
+            %<{description: "", type: "group"}
+                \cvevent{
+                {Title} %<{description: "Education / course title", type: "text", inputValue: "Title"}>
+                 }
+                 {| 
+                 {Institution} %<{description: "Institution, school, university", type: "text", inputValue: "Institution"}>
+                 }
+                 {Mm YYYY -- Mm YYYY} %<{description: "Period", type: "text", inputValue: "Mm YYYY -- Mm YYYY"}>
+                 {City, Country} %<{description: "City, country", type: "text", inputValue: "City, Country"}>
+                \begin{itemize}
+                %<{description: "Additional information", type: "list"}
+                    \item {GPA: 1,23} %<{description: "Information (like score or education features", type: "text", inputValue: "GPA: 1,23"}>
+                %>
+                \end{itemize}
+                \divider
+            %>
         %>
         % ----- EDUCATION -----
         
@@ -324,34 +351,60 @@
         %<{description: "Projects", type: "list", minChildren: 1}
             %<{description: "", type: "group"}
                 \cvevent{
-                {Project 1} %<{description: "Project name", type: "text"}>
+                {Project 1} %<{description: "Project name", type: "text", inputValue: "Project 1"}>
                  }
                  {
-                 %<{description: "Project links (Leave empty if you don't have any)", type: "group", deleteOnEmpty: true}
+                 %<{description: "Project links (optional)", type: "group", deleteOnEmpty: true}
                  %<{description: "", type: "list"}
                     %<{description: "", type: "group"}
-                         \cvrepo{\faGithub} %<{description: "Choose any icon that represents your link", type: "faicon"}>
-                         {https://github.com/user/repo} %<{description: "Link URL", type: "text"}>
+                        \cvrepo{\faGithub} %<{description: "Choose an icon that represents your link", type: "faicon", inputValue: "\\faGithub", inputValueIcon: "FaGithub"}>
+                        {https://github.com/user/repo} %<{description: "Link URL", type: "text", inputValue: "https://github.com/user/repo"}>
                     %>
-                         \cvrepo{ \faGlobe}{https://repo-demo.com/}
+                    %<{description: "", type: "group"}
+                        \cvrepo{\faGlobe} %<{description: "Choose an icon that represents your link", type: "faicon", inputValue: "\\faGlobe", inputValueIcon: "FaGlobe"}>
+                        {https://repo-demo.com/} %<{description: "Link URL", type: "text", inputValue: "https://repo-demo.com/"}>
+                    %>
                  %>
                  %>
                  }
-                 {Mm YYYY -- Mm YYYY}%<{description: "Project period", type: "text"}>
+                 {Mm YYYY -- Mm YYYY}%<{description: "Project period", type: "text", inputValue: "Mm YYYY -- Mm YYYY"}>
                  {}
                 \begin{itemize}
-                %<{description: "Additional information", type: "list", minChildren: 1}
-                    \item {Item 1} %<{description: "Project info", type: "text"}>
-                    \item Item 2
+                %<{description: "Additional information", type: "list"}
+                    \item {Item 1} %<{description: "Project info", type: "text", inputValue: "Item 1"}>
+                    \item {Item 2} %<{description: "Project info", type: "text", inputValue: "Item 2"}>
                 %>
                 \end{itemize}
                 \divider
             %>
-            \cvevent{Project 1 }{\cvrepo{ \faGitlab}{https://gitlab.com/user/repo}\cvrepo{ \faGlobe}{https://repo-demo.com/}}{Mm YYYY -- Mm YYYY}{}
-            \begin{itemize}
-                \item Item 1
-                \item Item 2
-            \end{itemize}
+            %<{description: "", type: "group"}
+                \cvevent{
+                {Project 1} %<{description: "Project name", type: "text", inputValue: "Project 1"}>
+                 }
+                 {
+                 %<{description: "Project links (optional)", type: "group", deleteOnEmpty: true}
+                 %<{description: "", type: "list"}
+                    %<{description: "", type: "group"}
+                        \cvrepo{\faGitlab} %<{description: "Choose an icon that represents your link", type: "faicon", inputValue: "\\faGitlab", inputValueIcon: "FaGitlab"}>
+                        {https://github.com/user/repo} %<{description: "Link URL", type: "text", inputValue: "https://github.com/user/repo"}>
+                    %>
+                    %<{description: "", type: "group"}
+                        \cvrepo{\faGlobe} %<{description: "Choose an icon that represents your link", type: "faicon", inputValue: "\\faGlobe", inputValueIcon: "FaGlobe"}>
+                        {https://repo-demo.com/} %<{description: "Link URL", type: "text", inputValue: "https://repo-demo.com/"}>
+                    %>
+                 %>
+                 %>
+                 }
+                 {Mm YYYY -- Mm YYYY}%<{description: "Project period", type: "text", inputValue: "Mm YYYY -- Mm YYYY"}>
+                 {}
+                \begin{itemize}
+                %<{description: "Additional information", type: "list"}
+                    \item {Item 1} %<{description: "Project info", type: "text", inputValue: "Item 1"}>
+                    \item {Item 2} %<{description: "Project info", type: "text", inputValue: "Item 2"}>
+                %>
+                \end{itemize}
+                \divider
+            %>
         %>
         % ----- PROJECTS -----
         
@@ -361,12 +414,12 @@
     {}
     %<{type: "group", description: "Color settings (optional)"}
     \hide{
-        %<{type: "color", description: "Primary color", initialColor: "#001F5A", id: "PrimaryColor"}>
-        %<{type: "color", description: "Secondary color", initialColor: "#0039AC", id: "SecondaryColor"}>
-        %<{type: "color", description: "Third color", initialColor: "#F3890B", id: "ThirdColor"}>
-        %<{type: "color", description: "Body color", initialColor: "#666666", id: "BodyColor"}>
-        %<{type: "color", description: "Emphasis color", initialColor: "#666666", id: "EmphasisColor"}>
-        %<{type: "color", description: "Background color", initialColor: "#E2E2E2", id: "BackgroundColor"}>
+        %<{type: "color", description: "Primary color", initialColor: "#001F5A", id: "PrimaryColor", inputValue: "001F5A"}>
+        %<{type: "color", description: "Secondary color", initialColor: "#0039AC", id: "SecondaryColor", inputValue: "0039AC"}>
+        %<{type: "color", description: "Third color", initialColor: "#F3890B", id: "ThirdColor", inputValue: "F3890B"}>
+        %<{type: "color", description: "Body color", initialColor: "#666666", id: "BodyColor", inputValue: "666666"}>
+        %<{type: "color", description: "Emphasis color", initialColor: "#666666", id: "EmphasisColor", inputValue: "666666"}>
+        %<{type: "color", description: "Background color", initialColor: "#E2E2E2", id: "BackgroundColor", inputValue: "E2E2E2"}>
     }
     %>
 \end{document}
